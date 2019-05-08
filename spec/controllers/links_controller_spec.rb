@@ -47,7 +47,7 @@ RSpec.describe LinksController, type: :controller do
         post :create, params: { link: valid_attributes }, session: valid_session
         expect(response).to have_http_status(:created)
         expect(JSON.parse(response.body)).to include(
-          "id" => link.id
+          "id" => link.to_param
         )
       end
     end
