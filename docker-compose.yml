@@ -1,0 +1,18 @@
+version: '2'
+services:
+  app:
+    container_name: href
+    build: .
+    command: bash -c "(bundle check || bundle install --binstubs="/bundle/bin") && bundle exec rails db:create db:migrate && bundle exec rails s"
+    environment:
+      - BUNDLE_PATH=/bundle
+      - BUNDLE_BIN=/bundle/bin
+      - GEM_HOME=/bundle
+    volumes:
+      - .:/app
+      - bundle_cache:/bundle
+    ports:
+      - 3000:3000
+
+volumes:
+  bundle_cache:

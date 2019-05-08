@@ -3,6 +3,25 @@ Hre.fr
 
 Really trying hard for the name URL Shortener Service (URLSS).
 
+## Setup
+
+Using docker we can get the project setup pretty easily.
+
+Clone the repo, and cd into the new project path.
+
+```shell
+docker-compose build
+docker-compose up
+```
+
+To run the test suite:
+
+```shell
+docker-compose run app rails spec
+```
+
+## Thoughts
+
 ### Phase 1 & 2
 
 The approach taken here is more about finding existing urls and using those existing records, and then just having some
