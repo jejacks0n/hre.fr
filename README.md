@@ -31,3 +31,9 @@ forever run with the fact that we've got legacy data issues?
 
 These are questions for teams, including product. I did the bare minimum since the CTO here at Hre.fr (me) claims we're
 still in lean startup mode and can do things like that without complex migrations in our production system.   
+
+### Phase 4
+
+I spent the most time here, and would have some questions on the feature request of the route. Here just a simple REST
+pattern was implemented (because I assume that's the desire), but I don't always agree with trying to strictly follow
+those prescribed rules in some scenarios (this being one of those cases).
