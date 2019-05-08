@@ -1,7 +1,23 @@
 Hre.fr
 ======
 
-Really trying hard for the name URL Shortener Service (URLSS).
+Really trying hard for the name URL Shortener Service.
+
+## Details
+
+Super simple implementation of the features requested using Rails + RSpec, and sqlite3. I intentionally chose some of
+the approaches because they have interesting implications that are fun for conversation. =) Thanks for your time
+reviewing it.
+
+Some business logic is extracted into jobs and we can consider these more or less Service Objects. This extraction
+enables the code to be shared and used in various places in the project over time.
+
+Testing is pretty light and not how I would normally do it. Generally my approach is to not have controller tests and
+instead invest into more integration type specs like (capybara or similar) style that cover the whole stack -- which
+these controller tests shoot for.
+
+I always like to talk about delivering quick simple features, measuring success, and then iterating on improving the
+features. I've pretty much taken that approach here as well and left a lot of room for new features and growth.
 
 ## Setup
 
