@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Link, type: :model do
+  it { is_expected.to have_many(:uses).class_name("LinkUsage") }
+
   it { is_expected.to validate_presence_of(:url) }
   it { is_expected.to allow_value("https://cnn.com/foo/bar").for(:url) }
   it { is_expected.to allow_value("https://example.com").for(:url) }

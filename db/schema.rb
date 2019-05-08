@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_08_173533) do
+ActiveRecord::Schema.define(version: 2019_05_08_183658) do
+
+  create_table "link_usages", force: :cascade do |t|
+    t.integer "link_id", null: false
+    t.string "referer"
+    t.string "user_agent"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["link_id"], name: "index_link_usages_on_link_id"
+  end
 
   create_table "links", force: :cascade do |t|
     t.string "url"
@@ -20,4 +29,5 @@ ActiveRecord::Schema.define(version: 2019_05_08_173533) do
     t.index ["url"], name: "index_links_on_url"
   end
 
+  add_foreign_key "link_usages", "links"
 end

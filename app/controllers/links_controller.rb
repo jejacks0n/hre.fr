@@ -2,6 +2,12 @@ class LinksController < ApplicationController
   before_action :set_link, only: [:show]
 
   def show
+    TrackLinkUsage.perform_later(
+      link: @link,
+      referer: request.referrer,
+      user_agent: request.user_agent
+    )
+
     redirect_to @link.url, status: :moved_permanently
   end
 

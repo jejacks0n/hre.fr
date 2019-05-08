@@ -16,6 +16,15 @@ RSpec.describe LinksController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #show" do
+    it "tracks the usage" do
+      perform_enqueued_jobs do
+        link = Link.create!(valid_attributes)
+        expect {
+          get :show, params: { id: link.to_param }, session: valid_session
+        }.to change(link.uses, :count).by(1)
+      end
+    end
+
     it "redirects to the expected url" do
       link = Link.create!(valid_attributes)
       get :show, params: { id: link.to_param }, session: valid_session
