@@ -22,6 +22,8 @@ class LinksController < ApplicationController
     end
 
     def link_params
-      params.require(:link).permit(:url)
+      params.require(:link).permit(:url, :user_id).tap do |hash|
+        hash[:user_id] ||= nil
+      end
     end
 end

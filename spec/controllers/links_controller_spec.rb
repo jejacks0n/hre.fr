@@ -50,6 +50,26 @@ RSpec.describe LinksController, type: :controller do
           "id" => link.to_param
         )
       end
+
+      it "allows users to create their own unique records when specifying who they are" do
+        link = Link.create!(valid_attributes)
+
+        post :create, params: { link: valid_attributes.merge(user_id: 42) }, session: valid_session
+        expect(response).to have_http_status(:created)
+        expect(JSON.parse(response.body)).to_not include(
+          "id" => link.to_param
+        )
+      end
+
+      it "doesn't let non-users and users share urls" do
+        link = Link.create!(valid_attributes.merge(user_id: 42))
+
+        post :create, params: { link: valid_attributes }, session: valid_session
+        expect(response).to have_http_status(:created)
+        expect(JSON.parse(response.body)).to_not include(
+          "id" => link.to_param
+        )
+      end
     end
 
     context "with invalid params" do
